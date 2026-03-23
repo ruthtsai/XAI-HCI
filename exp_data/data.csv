@@ -1,8 +1,8 @@
-﻿id, image,ground_truth,prediction,confidence,image_gradcam,shap_top_1,why_not_text,risk_level
+﻿id, image,ground_truth,prediction,confidence,image_gradcam,image_shap,shap_top_1,why_not_text
 1,Huang_Delight_01_orig.jpg,喜悅,喜悅,0.9974,cam_Huang_Delight_01_orig.jpg,,,
-2,yu_Delight_21_orig.jpg,喜悅,喜悅,0.9890,cam_yu_Delight_21_orig.jpg,,,
-3,Yo_Delight_25_orig.jpg,喜悅,喜悅,0.9989,cam_Yo_Delight_25_orig.jpg,,,
-4,Yo_Surprise_10_orig.jpg,驚訝,驚訝,1,cam_Yo_Surprise_10_orig.jpg,,
+2,yu_Delight_21_orig.jpg,喜悅,喜悅,0.9890,cam_yu_Delight_21_orig.jpg,,,,
+3,Yo_Delight_25_orig.jpg,喜悅,喜悅,0.9989,cam_Yo_Delight_25_orig.jpg,,,,
+4,Yo_Surprise_10_orig.jpg,驚訝,驚訝,1,cam_Yo_Surprise_10_orig.jpg,,,,
 5,Yo_Boredom_06_orig.jpg,無聊,無聊,0.8213,cam_Yo_Boredom_06_orig.jpg,,,,
 6,Huang_Engagement_09_orig.jpg,投入,投入,0.9449,cam_Huang_Engagement_09_orig.jpg,,,,
 7,Yo_Engagement_21_orig.jpg,投入,投入,0.8411,cam_Yo_Engagement_21_orig.jpg,,,,
