@@ -1,4 +1,4 @@
-﻿id, image,ground_truth,prediction,confidence,image_gradcam,image_shap,shap_top_1,why_not_text
+﻿id,image,ground_truth,prediction,confidence,image_gradcam,image_shap,why_not_text
 21,Huang_Boredom_06_orig.jpg,無聊,無聊,0.7695,cam_Huang_Boredom_06_orig.jpg,Huang_Boredom_06_orig_grid,,
 12,Huang_Boredom_23_orig.jpg,無聊,困惑,0.4558,cam_Huang_Boredom_23_orig.jpg,Huang_Boredom_23_orig_grid,,
 20,Huang_Confusion_d05_orig.jpg,困惑,投入,0.3489,cam_Huang_Confusion_d05_orig.jpg,Huang_Confusion_d05_orig_grid,,
