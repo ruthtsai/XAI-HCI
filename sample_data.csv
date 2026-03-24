@@ -1,0 +1,6 @@
+timestamp,student_id,event_type,engagement_score,emotion,quiz_score
+2026-03-24 15:18:42,S10001,START,0.27,Frustration,null
+2026-03-24 15:18:42,S10002,PAUSE,0.95,Engagement,null
+2026-03-24 15:18:42,S10003,START,0.79,Delight,null
+2026-03-24 15:18:42,S10004,PAUSE,0.63,Confusion,null
+2026-03-24 15:18:42,S10005,SUBMIT,0.79,Engagement,0
