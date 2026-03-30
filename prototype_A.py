@@ -7,6 +7,7 @@ import cv2
 import numpy as np
 from datetime import datetime
 from deepface import DeepFace
+import time
 
 # ── 頁面設定 ───────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -96,6 +97,15 @@ st.markdown("""
         font-weight: bold;
         font-family: 'Space Mono', monospace;
     }
+
+    div.webcam-container {
+        width: 120px !important; 
+        max-width: 120px !important;
+        margin: 0 auto !important;
+        overflow: hidden !important;
+        line-height: 0 !important;
+    }
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -232,21 +242,32 @@ with col_left:
 
 with col_right:
     st.subheader("📷 即時影像監測")
-    @st.fragment(run_every=2)
+    if "last_analysis_time" not in st.session_state:
+        st.session_state.last_analysis_time = 0
+
+    @st.fragment(run_every=0.1) # 提高刷新率到 0.1秒，讓畫面看起來順暢
     def live_metrics_panel():
         cap = st.session_state.camera_obj
         ret, frame = cap.read()
         
         if ret:
-            # 轉換顏色供顯示
+            # 1. 處理並顯示縮小的影像
             frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            st.image(frame_rgb, use_container_width=True)
+            c1, c2, c3 = st.columns([1, 2, 1])
+            with c2:
+                st.markdown('<div class="webcam-container">', unsafe_allow_html=True)
+                st.image(frame_rgb, use_container_width=False)
+                st.markdown('</div>', unsafe_allow_html=True)
+
+            # 2. 控制分析頻率 (例如每 3 秒才分析一次 DeepFace)
+            current_time = time.time()
+            if current_time - st.session_state.last_analysis_time > 3.0:
+                # 這裡執行耗時的偵測
+                emo, score = analyze_frame(frame)
+                st.session_state.last_detected_metrics = {"emotion": emo, "score": score}
+                st.session_state.last_analysis_time = current_time
             
-            # 自動分析
-            emo, score = analyze_frame(frame)
-            st.session_state.last_detected_metrics = {"emotion": emo, "score": score}
-            
-            # 顯示並排指標列
+            # 3. 顯示指標列 (讀取 session_state 裡的舊資料，不會卡頓)
             m = st.session_state.last_detected_metrics
             color = EMOTION_COLOR.get(m["emotion"], "#e8e6e0")
             
